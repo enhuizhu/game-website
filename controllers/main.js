@@ -25,7 +25,15 @@ exports.init = function(db,view){
 
        addUser : function(req,resp){
             
+            
+
+
             console.log(req.body);
+
+            userModel.addUser(req.body,function(){
+
+            });
+
 
  
 
