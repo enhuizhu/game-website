@@ -1,0 +1,24 @@
+html
+  head
+    title!= title
+    link(rel='stylesheet',href='/css/style.css')
+    script(language="javascript",src="/js/main.js")
+  body
+    h1!= message
+    ul
+      each val,index in users
+        li= index + ":" + val.hello
+    form(method='post',action="")
+      div
+        label name:
+        input(name="username")
+      div
+        label password:
+        input(name="password")
+      div
+        input(type="submit",value="send")
+
+
+
+
+
