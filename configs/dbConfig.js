@@ -1,8 +1,6 @@
 "use strict";
-
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
-
 // Connect to the db
 MongoClient.connect("mongodb://localhost:27017/exampleDb", {native_parser:true}, function(err, db) {  
     if(!err){
@@ -13,4 +11,4 @@ MongoClient.connect("mongodb://localhost:27017/exampleDb", {native_parser:true},
     } 
 });
 
-exports.db = MongoClient;
+module.exports = MongoClient;
