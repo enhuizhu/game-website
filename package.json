@@ -1,7 +1,9 @@
 {
-    "name": "black.jack",
+    "name": "mvc-framework",
     "version": "0.0.0",
     "dependencies": {
-        "client-sessions": "~0.7.0" 
+        "client-sessions": "~0.7.0",
+        "express": "~4.13.3",
+        "body-parser": "~1.14.2"
     }
 }
