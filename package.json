@@ -1,0 +1,7 @@
+{
+    "name": "black.jack",
+    "version": "0.0.0",
+    "dependencies": {
+        "client-sessions": "~0.7.0" 
+    }
+}
