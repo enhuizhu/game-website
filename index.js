@@ -66,6 +66,7 @@ app.use(express.static(__dirname + '/public'));
 **/
 require("./routes/route.js")(app);
 
+console.info("the value of env is:", process.env);
 app.listen(3000);
 
 
