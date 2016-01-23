@@ -1,20 +1,14 @@
+doctype html
 html
   head
-    title!= title
+    title black jack
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel='stylesheet',href='/vendors/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet',href='/vendors/bootstrap/dist/css/bootstrap-theme.min.css')
     link(rel='stylesheet',href='/css/style.css')
-    script(language="javascript",src="/js/main.js")
+    script(language="javascript",src="/vendors/jQuery/dist/jquery.min.js")
+    script(language="javascript",src="/vendors/bootstrap/dist/js/bootstrap.min.js")
+    script(language="javascript",src="/vendors/angular/angular.min.js")
+    script(language="javascript",src="/vendors/underscore/underscore-min.js")
   body
-    h1!= message
-    ul
-      each val,index in users
-        li= index + ":" + val.hello
-    form(method='post',action="")
-      div
-        label name:
-        input(name="username")
-      div
-        label password:
-        input(name="password")
-      div
-        input(type="submit",value="send")
-
+    div(class="container") register and login

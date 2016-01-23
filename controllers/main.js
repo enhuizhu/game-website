@@ -1,31 +1,40 @@
 "use strict";
- var userModel =  require("../models/users"),
-     view = require("../view");
+var coreController = require("../core/controller");
 
-module.exports = {
-    getAll: function(req,resp){
-       userModel.getAll(function(err,items){
-       
-       if(!err){
-          view.assign("users", items);
-          view.assign("title", "test");
-          view.assign("message", "this is message from controller");     
-          view.display("index", resp);
-       }else{
-          resp.end("some error happen on server!");
-       } 
-      });
-    },
-
-    addUser: function(req,resp){
-        console.log(req.body);
-        userModel.addUser(req.body,function(items){
-            view.assign("users", items);
-            view.display("users", resp);
+var mainController = function(req, resp) {
+    var self = this;
+    
+    this.req = req;
+    this.resp = resp;
+    
+    this.getModel("users");
+    
+    this.getAll = function() {
+        this.users.getAll(function(err,items){
+            if(!err){
+                self.view.assign("users", items);
+                self.view.assign("title", "test");
+                self.view.assign("message", "this is message from controller");     
+                self.view.display("index", self.resp);
+            }else{
+                self.resp.end("some error happen on server!");
+            } 
         });
-    },
+    };
 
-    welcome: function(req,resp){
-       view.display("helloWorld", resp);
-    }
-}
+    this.addUser = function(){
+        this.users.addUser(this.req.body,function(items){
+            self.view.assign("users", items);
+            self.view.display("users", self.resp);
+        });
+    };
+
+    this.welcome = function(){
+        this.view.display("helloWorld", this.resp);
+    };
+};
+
+mainController.prototype = Object.create(coreController.prototype);
+mainController.prototype.constructor = mainController;
+
+module.exports = mainController;

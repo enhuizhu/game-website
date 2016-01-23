@@ -1,10 +1,9 @@
 "use strict";
 
-var db = require("../configs/dbConfig");
+var model = require("../core/model");
 
 var obj = {
-    db: db.db,
-    
+
     getAll: function(callback) {
         var collection = this.db.collection("test");
         collection.find().toArray(callback);
@@ -33,4 +32,4 @@ var obj = {
 /**
 * user model here
 **/
-module.exports = obj;
+module.exports = _.extend(obj, model);

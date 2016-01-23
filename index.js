@@ -9,6 +9,8 @@ var session = require("client-sessions");
 **/
 var mongoDb = require("./configs/dbConfig");
 
+_ = require("underscore");
+
 app.use(session({
     cookieName: 'session',
     secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
@@ -58,17 +60,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.use(bodyParser.raw());
 
-app.set("views",__dirname + "/views");
+app.set("views", __dirname + "/views");
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 /**
 * start route
 **/
 require("./routes/route.js")(app);
-
-console.info("the value of env is:", process.env);
 app.listen(3000);
-
-
-
-

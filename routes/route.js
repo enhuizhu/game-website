@@ -12,14 +12,14 @@ module.exports = function(app){
 	function response( obj, req, res ){
 		if( typeof controllers[ obj.controller ] == 'undefined' ) {
 			controllers[ obj.controller ] = require("../controllers/" + obj.controller +  ".js");
-			controllers[ obj.controller ] = controllers[obj.controller];	
+			controllers[ obj.controller ] = new controllers[obj.controller](req, res);	
 		}
 		
 		controllers[obj.controller][obj.action](req, res);
 	}
 	
 	app.get('/', function(req, res) {
-	   view.display("helloWorld",res);
+	    view.display("index",res);
 	});
 
 	app.get('/api',function(req,res){
@@ -40,7 +40,7 @@ module.exports = function(app){
 		response({
 			controller: 'main',
 			action: 'welcome'
-		}, req, res );
+		}, req, res);
 	});
 
 	
