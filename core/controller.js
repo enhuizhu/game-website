@@ -5,7 +5,7 @@
 **/
 var controller = function() {};
 
-controller.prototype.view = require("../view");
+controller.prototype.view = require("../core/view");
 
 controller.prototype.getModel = function(modelName) {
 	this[modelName] = require("../models/" + modelName + ".js");

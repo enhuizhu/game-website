@@ -10,6 +10,7 @@ var session = require("client-sessions");
 var mongoDb = require("./configs/dbConfig");
 
 _ = require("underscore");
+view = require("./core/view.js");
 
 app.use(session({
     cookieName: 'session',
@@ -21,6 +22,9 @@ app.use(session({
 }));
 
 app.use(function(req, res, next) {
+    request = req;
+    response = res;
+    
     if (req.session) {
         if (!req.session.visit) {
             req.session.visit = 0;
@@ -62,6 +66,7 @@ app.use(bodyParser.raw());
 
 app.set("views", __dirname + "/views");
 app.set('view engine', 'jade');
+app.set('view options', { pretty: true });
 app.use(express.static(__dirname + '/public'));
 /**
 * start route

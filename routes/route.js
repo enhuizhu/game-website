@@ -1,8 +1,3 @@
-var view = require("../view.js");
-/**
-* import the controllers 
-**/
-
 /**
 * all the route will be here
 **/
@@ -12,10 +7,10 @@ module.exports = function(app){
 	function response( obj, req, res ){
 		if( typeof controllers[ obj.controller ] == 'undefined' ) {
 			controllers[ obj.controller ] = require("../controllers/" + obj.controller +  ".js");
-			controllers[ obj.controller ] = new controllers[obj.controller](req, res);	
+			controllers[ obj.controller ] = new controllers[obj.controller]();	
 		}
 		
-		controllers[obj.controller][obj.action](req, res);
+		controllers[obj.controller][obj.action]();
 	}
 	
 	app.get('/', function(req, res) {
@@ -42,6 +37,4 @@ module.exports = function(app){
 			action: 'welcome'
 		}, req, res);
 	});
-
-	
 }

@@ -10,5 +10,29 @@ html
     script(language="javascript",src="/vendors/bootstrap/dist/js/bootstrap.min.js")
     script(language="javascript",src="/vendors/angular/angular.min.js")
     script(language="javascript",src="/vendors/underscore/underscore-min.js")
-  body
-    div(class="container") register and login
+  body(ng-app="game" ng-controller="main")
+    div(class="container")
+      p
+        div(class="col-md-6 col-sm-6 col-lg-6")
+        div(class="col-xs-12 col-md-6 col-sm-6 col-lg-6")
+          div(class="well well-sm tab-wrapper", role="tablist")
+            ul(class="nav nav-tabs")
+              li(role="presentation", class="active") 
+                a(href="#login", data-toggle="tab") Login
+              li(role="presentation")
+                a(href="#registration", data-toggle="tab") Registration
+            div(class="tab-content")
+              div(role="tabpanel", class="tab-pane fade in active", id="login")
+                p
+                login
+              div(role="tabpanel", class="tab-pane fade", id="registration")
+                p
+                register
+      div(class="clearfix")
+      // include all the source code
+      script(src="/scripts/app.js")
+      script(src="/scripts/controllers/main.js")
+      script(src="/scripts/directives/login.js")
+      script(src="/scripts/directives/register.js")
+      script(src="/scripts/services/validation.js")
+

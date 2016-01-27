@@ -1,36 +1,33 @@
 "use strict";
 var coreController = require("../core/controller");
 
-var mainController = function(req, resp) {
+var mainController = function() {
     var self = this;
-    
-    this.req = req;
-    this.resp = resp;
-    
+        
     this.getModel("users");
     
     this.getAll = function() {
         this.users.getAll(function(err,items){
             if(!err){
-                self.view.assign("users", items);
-                self.view.assign("title", "test");
-                self.view.assign("message", "this is message from controller");     
-                self.view.display("index", self.resp);
+                view.assign("users", items);
+                view.assign("title", "test");
+                view.assign("message", "this is message from controller");     
+                view.display("index");
             }else{
-                self.resp.end("some error happen on server!");
+                response.end("some error happen on server!");
             } 
         });
     };
 
     this.addUser = function(){
-        this.users.addUser(this.req.body,function(items){
-            self.view.assign("users", items);
-            self.view.display("users", self.resp);
+        this.users.addUser(request.body, function(items){
+            view.assign("users", items);
+            view.display("users");
         });
     };
 
     this.welcome = function(){
-        this.view.display("helloWorld", this.resp);
+        view.display("helloWorld");
     };
 };
 

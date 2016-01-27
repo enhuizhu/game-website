@@ -1,0 +1,6 @@
+{
+  "name": "game website test",
+  "dependencies": {
+      "angular-mocks": "~1.5.0"
+  }
+}
