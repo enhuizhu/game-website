@@ -11,6 +11,8 @@ var mongoDb = require("./configs/dbConfig");
 
 _ = require("underscore");
 view = require("./core/view.js");
+q = require("q");
+apiResponse = require("./modules/apiResponse");
 
 app.use(session({
     cookieName: 'session',

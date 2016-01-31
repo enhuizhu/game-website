@@ -7,7 +7,7 @@ module.exports = {
         this.data[key] = value;
     },
 
-    display : function(fileName, res){         
+    display : function(fileName){         
        	response.render(fileName , this.data);
     }
 }

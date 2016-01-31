@@ -14,27 +14,36 @@ module.exports = function(app){
 	}
 	
 	app.get('/', function(req, res) {
-	    view.display("index",res);
+	    var url = require("../modules/url");
+	    view.assign("api", url.getBaseUrl(req));
+	    view.display("index");
+	});
+
+	app.post("/addUser", function(req, res) {
+		response({
+			controller: "user",
+			action: "addUser"
+		});
 	});
 
 	app.get('/api',function(req,res){
 		response({
 			controller: 'main',
 			action: 'getAll'
-		}, req, res );
+		});
 	});
 
     app.post('/api',function(req,res){
         response({
             controller:'main',
             action : 'addUser'
-        },req,res);
+        });
     });	
 
 	app.get('/api2',function(req,res){
 		response({
 			controller: 'main',
 			action: 'welcome'
-		}, req, res);
+		});
 	});
 }

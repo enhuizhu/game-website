@@ -1,35 +1,40 @@
-"use strict";
+    "use strict";
 
 var model = require("../core/model");
 
-var obj = {
-
+var obj = {    
     getAll: function(callback) {
         var collection = this.db.collection("test");
         collection.find().toArray(callback);
     },
 
-    addUser: function(data, callback) {
-        var collection = this.db.collection("users");
+    getUserBaseOnUsernameOrEmail: function(username, email, callback) {
+        this.userCollection.find({
+            $or:[
+                {username: username},
+                {email: email}
+        ]}).toArray(callback);
+    },
 
-        collection.insert({
+    addUser: function(data, callback) {        
+        this.userCollection.insert({
             username: data.username,
-            password: data.password
+            password: data.password,
+            email: data.email
         }, {w:1}, function(err, records) {
             if(!err) {
-                console.log("records has been added successfully!");
-                collection.find().toArray(function(err,items){
-                  console.log("all the items are:",items);
-                  callback(items);
-                });
+                callback(apiResponse.buildResponse(true, "new record has been inserted successfully!"));
             }else{
-              
-
+                callback(apiResponse.buildResponse(false, err));
             }
         });
     }
 };
+
+_.extend(obj, model);
+
+obj.userCollection = obj.db.collection("users");
 /**
 * user model here
 **/
-module.exports = _.extend(obj, model);
+module.exports = obj;

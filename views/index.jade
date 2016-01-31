@@ -27,12 +27,16 @@ html
                 login
               div(role="tabpanel", class="tab-pane fade", id="registration")
                 p
-                register
+                register(register-callback="registerCallback")
       div(class="clearfix")
+      script.
+        var app = {
+            api: "#{api}"
+        }
       // include all the source code
       script(src="/scripts/app.js")
       script(src="/scripts/controllers/main.js")
       script(src="/scripts/directives/login.js")
       script(src="/scripts/directives/register.js")
       script(src="/scripts/services/validation.js")
-
+      script(src="/scripts/services/api.js")
